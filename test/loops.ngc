@@ -1,0 +1,41 @@
+(msg,testing while loop using #1)
+#1 = 0
+o100 while [#1 LT 3]
+	X#1
+	#1 = [#1+1]
+o100 endwhile
+
+(msg,testing do-while loop using #2)
+#2 = 2.3
+o200 do
+	Y#2
+	#2 = [#2-0.1]
+	o210 if [#2 LT 1.8]
+		o200 break
+	o210 endif
+	o220 if [#1 LT 2]
+		o200 continue
+	o220 endif
+	Z#1
+	#1 = [#1 - 1]
+(debug,Param 2 equals #2)
+o200 while [#2 GE 1]
+
+(log,testing if statement)
+o300 if [#1 GE 3] ;print,Condition uses param 1: #1
+	X#1
+o300 elseif [#1 GE 1]
+	Y#1
+o300 else
+	Z#1
+o300 endif
+
+(msg,testing repeat statement)
+o400 repeat [3]
+	o500 sub
+		#2 = 3;
+	o500 endsub
+	#2 = [#2-0.3]
+	X#2 (msg,run);debug,using param 2 = #2
+o400 endrepeat
+M30

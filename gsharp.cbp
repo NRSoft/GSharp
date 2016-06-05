@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="gsharp" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Release">
+				<Option output="lib/gsharp" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="" />
+				<Option object_output="obj/Release" />
+				<Option type="2" />
+				<Option compiler="gcc" />
+				<Option createDefFile="1" />
+				<Compiler>
+					<Add option="-O2" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+			</Target>
+			<Target title="Test">
+				<Option output="gsharp_test" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Test" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-g" />
+					<Add option="-DTEST_BUILD" />
+					<Add directory="external/gtest/include" />
+				</Compiler>
+				<Linker>
+					<Add option="-pthread" />
+					<Add library="external/gtest/lib/libgtest.a" />
+					<Add library="external/gtest/lib/libgtest_main.a" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+			<Add option="-std=c++11" />
+			<Add directory="include" />
+		</Compiler>
+		<Unit filename="include/gsharp.h">
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="include/gsharp_extra.h" />
+		<Unit filename="src/gsharp.cpp">
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="src/gsharp_except.h" />
+		<Unit filename="src/gsharp_parser.cpp" />
+		<Unit filename="src/gsharp_program.cpp" />
+		<Unit filename="src/gsharp_program.h" />
+		<Unit filename="src/version.h" />
+		<Unit filename="test/gsharp_test.h">
+			<Option target="Test" />
+		</Unit>
+		<Unit filename="test/parse_expression_test.cpp">
+			<Option target="Test" />
+		</Unit>
+		<Unit filename="test/parse_o_code_test.cpp">
+			<Option target="Test" />
+		</Unit>
+		<Extensions>
+			<code_completion />
+			<envvars />
+			<debugger />
+			<lib_finder disable_auto="1" />
+			<AutoVersioning>
+				<Scheme minor_max="100" build_max="0" rev_max="0" rev_rand_max="10" build_times_to_increment_minor="10000" />
+				<Settings autoincrement="0" date_declarations="1" use_define="0" update_manifest="1" do_auto_increment="1" ask_to_increment="0" language="C++" svn="0" svn_directory="" header_path="src/version.h" />
+				<Changes_Log show_changes_editor="0" app_title="released version %M.%m.%b of %p" changeslog_path="ChangesLog.txt" />
+				<Code header_guard="GSHARP_VERSION_H" namespace="gsharp" prefix="GSHARP" />
+			</AutoVersioning>
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

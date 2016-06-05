@@ -1,0 +1,45 @@
+(do NOT change the code below unless you update the tests correspondingly)
+
+(msg,Testing subroutine.ngc)
+o100 sub (to test local parameters and return statement)
+(print,sub1 [1]=#1, [2]=#2)
+	y#1 (expect "y1")
+	y#2 (expect "y2")
+	y#30 (expect "y12", same as in the calling context)
+	#1 = 21
+	#31 = 31 (changing global parameter)
+	y#31 (expect "y31")
+	o100 return [456]
+	#1 = 22
+	x#1 (not expected)
+o100 endsub [123]
+
+g0 x0y0z0 (expect "g0x0y0z0")
+#1 = 11
+x#1 (expect "x11")
+#30 = 12
+x#30 (expect "x12")
+(debug,main [1]=#1, [30]=#30, [5000]=#5000)
+o100 call [1][2]
+(debug,main [1]=#1, [30]=#30, [5000]=#5000)
+x#5000 (expect "x456")
+x#1 (expect "x11")
+x#30 (expect "x12")
+x#31 (expect "x31", global)
+o200 call [6]
+(DEBUG,main [1]=#1, [30]=#30, [5000]=#5000)
+x#5000 (expect "x123")
+x#1 (expect "x11")
+(LOG,Finished)
+m2 (expect "m2")
+y#31 (not expected)
+
+o200 sub (to test endsub statement)
+(PRINT,sub2 [1]=#1)
+	y#1 (expect "y6")
+	o210 if [#1 LE 5]
+		o200 return [456]
+	o210 endif
+	#1 = 26
+	y#1 (expect "y26")
+o200 endsub [123]
