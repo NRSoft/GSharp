@@ -26,3 +26,19 @@
 *.exe
 *.out
 *.app
+g#2g
+gsharp_test
+
+# Temporary files
+*~
+*.swp
+
+# Code:Blocks temporary files
+*.depend
+*.layout
+*.html
+
+# Local directories
+**/bin/
+**/lib/
+**/obj/
