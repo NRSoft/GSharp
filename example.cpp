@@ -59,7 +59,7 @@ int main(int argc, char* argv[])
 
    cout << "G#2G: CNC G# macro-code converter to plain G-Code" << endl;
    cout << " Using libgsharp ver " << r.GetVersionStr() << "" << endl;
-   cout << " More info at https://github.com/" << endl << endl;
+   cout << " More info at https://github.com/nrsoft/gsharp" << endl << endl;
    if(argc < 3){
       cout << "Usage: " << endl;
       cout << " g#2g <input_file> <output_file>" << endl << endl;
