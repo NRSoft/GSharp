@@ -1,11 +1,11 @@
 /*
  *  Copyright 2016, Night Road Software (https://github.com/nrsoft)
  *  All rights reserved.
- *  
+ *
  *  Redistribution and use in source and binary forms, with or without
  *  modification, are permitted provided that the following conditions are
  *  met:
- *  
+ *
  *      * Redistributions of source code must retain the above copyright
  *  notice, this list of conditions and the following disclaimer.
  *      * Redistributions in binary form must reproduce the above
@@ -15,7 +15,7 @@
  *      * Neither the name of "Night Road Software" nor the names of its
  *  contributors may be used to endorse or promote products derived from
  *  this software without specific prior written permission.
- *  
+ *
  *  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
  *  "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
  *  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
@@ -67,75 +67,69 @@ void Interpreter::GetVersion(int& major, int& minor, int& build, int& rev) const
 void Interpreter::Load(const string& code)
 {
    try{ ((Program*)_interpreter)->Load(code); }
-   catch(ErrorMsg& err){ throw err.what(); }
+   catch(ErrorMsg& err){ throw err; }
 }
 
 
 bool Interpreter::Step(string& line, ExtraInfo& extra)
 {
    try{ return ((Program*)_interpreter)->Step(line, extra); }
-   catch(ErrorMsg& err){ throw err.what(); }
+   catch(ErrorMsg& err){ throw err; }
 }
 
 
 void Interpreter::Rewind()
 {
-   try{ ((Program*)_interpreter)->Rewind(); }
-   catch(ErrorMsg& err){ throw err.what(); }
+   ((Program*)_interpreter)->Rewind();
 }
 
 
 void Interpreter::Clear()
 {
-   try{ ((Program*)_interpreter)->Clear(); }
-   catch(ErrorMsg& err){ throw err.what(); }
+   ((Program*)_interpreter)->Clear();
 }
 
 
 void Interpreter::EnableBlockDelete(bool enable)
 {
-   try{ ((Program*)_interpreter)->EnableBlockDelete(enable); }
-   catch(ErrorMsg& err){ throw err.what(); }
+   ((Program*)_interpreter)->EnableBlockDelete(enable);
 }
 
 
 void Interpreter::EnablePrettyFormat(bool enable)
 {
-   try{ ((Program*)_interpreter)->EnablePrettyFormat(enable); }
-   catch(ErrorMsg& err){ throw err.what(); }
+   ((Program*)_interpreter)->EnablePrettyFormat(enable);
 }
 
 
 void Interpreter::EnableConvertToUpper(bool enable)
 {
-   try{ ((Program*)_interpreter)->EnableConvertToUpper(enable); }
-   catch(ErrorMsg& err){ throw err.what(); }
+   ((Program*)_interpreter)->EnableConvertToUpper(enable);
 }
 
 
 void Interpreter::SetParam(unsigned int number, double value)
 {
    try{ ((Program*)_interpreter)->SetParam(number, value); }
-   catch(ErrorMsg& err){ throw err.what(); }
+   catch(ErrorMsg& err){ throw err; }
 }
 
 
 double Interpreter::GetParam(unsigned int number) const
 {
    try{ return ((Program*)_interpreter)->GetParam(number); }
-   catch(ErrorMsg& err){ throw err.what(); }
+   catch(ErrorMsg& err){ throw err; }
 }
 
 
 const std::string Interpreter::GetSourceLine(unsigned int num) const
 {
    try{ return ((Program*)_interpreter)->GetSourceLine(num); }
-   catch(ErrorMsg& err){ throw err.what(); }
+   catch(ErrorMsg& err){ throw err; }
 }
 
 
 unsigned int Interpreter::GetCurrentLineNumber() const
 {
-   try{ return ((Program*)_interpreter)->GetCurrentLineNumber(); }
-   catch(ErrorMsg& err){ throw err.what(); }
+   return ((Program*)_interpreter)->GetCurrentLineNumber();
 }
