@@ -101,8 +101,10 @@ int main(int argc, char* argv[])
    try{
       while(r.Step(str, extra)){
          // record next G-Code line
-         if(!str.empty())
+         if(!str.empty()){
             file_out << str << endl;
+            //cout << "(" << r.GetCurrentLineNumber() << "): " << str << endl; // console check
+         }
          // any messages to display?
          gsharp::ExtraInfo::Type t;
          while(extra.FirstNonEmpty(&t)){

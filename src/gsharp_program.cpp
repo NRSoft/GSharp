@@ -1,11 +1,11 @@
 /*
  *  Copyright 2016, Night Road Software (https://github.com/nrsoft)
  *  All rights reserved.
- *  
+ *
  *  Redistribution and use in source and binary forms, with or without
  *  modification, are permitted provided that the following conditions are
  *  met:
- *  
+ *
  *      * Redistributions of source code must retain the above copyright
  *  notice, this list of conditions and the following disclaimer.
  *      * Redistributions in binary form must reproduce the above
@@ -15,7 +15,7 @@
  *      * Neither the name of "Night Road Software" nor the names of its
  *  contributors may be used to endorse or promote products derived from
  *  this software without specific prior written permission.
- *  
+ *
  *  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
  *  "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
  *  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
@@ -58,6 +58,7 @@ Program::Program()
 void Program::Rewind()
 {
    _current_line = 1;
+   _last_used_line = 0;
    _current_internal_param = INTERNAL_PARAMETERS_START-1;
    _local_params.fill(0);
    while(!_param_stack.empty())
@@ -235,6 +236,7 @@ bool Program::Step(string& line, ExtraInfo& extra)
 {
    extra.Clear();
    while(_current_line < _code.size()){
+      _last_used_line = _current_line;
       // program runs only within % delimiters, if they are present
       if(_percent_start > 0){
          if(_current_line == _percent_start){

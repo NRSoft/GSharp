@@ -107,7 +107,7 @@ public:
    void SetParam(unsigned int number, double value);
    double GetParam(unsigned int number) const;
 
-   inline LineNumber GetCurrentLineNumber() const {return _current_line;}
+   inline LineNumber GetCurrentLineNumber() const {return _last_used_line;}
    const string GetSourceLine(LineNumber num) const;
 
    // Levels of debug output to stdout:
@@ -122,6 +122,7 @@ protected:
    vector<string> _code; // the program code split into lines (incl. empty)
 
    LineNumber _current_line; // current line number in the code for parsing
+   LineNumber _last_used_line; // the number of the last line at which execution paused
 
    unordered_map<ONumber, CodeBlock> _blocks; // list of o-blocks with parameters
 
