@@ -2,7 +2,6 @@
 *.slo
 *.lo
 *.o
-*.obj
 
 # Precompiled Headers
 *.gch
@@ -23,7 +22,6 @@
 *.lib
 
 # Executables
-*.exe
 *.out
 *.app
 g#2g
@@ -53,16 +51,43 @@ gsharp_test
 *.sln.docstates
 
 # Build results
-**/[Dd]ebug/
+**/[Dd]ebug*/
 **/[Dd]ebugPublic/
 **/[Rr]elease/
 **/[Rr]eleases/
 **/[Xx]64/
 **/[Xx]86/
+**/[Ww]in32/
 **/[Bb]uild/
 **/bld/
 **/[Bb]in/
 **/[Oo]bj/
+
+*_i.c
+*_p.c
+*_i.h
+*.ilk
+*.meta
+*.obj
+*.iobj
+*.pdb
+*.ipdb
+*.pgc
+*.pgd
+*.rsp
+*.sbr
+*.tlb
+*.tli
+*.tlh
+*.tmp
+*.tmp_proj
+*.log
+*.vspscc
+*.vssscc
+.builds
+*.pidb
+*.svclog
+*.scc
 
 # Visual C++ cache files
 ipch/
