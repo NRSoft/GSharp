@@ -440,7 +440,7 @@ double Program::_CalculateExpressionFromBracket(const string& line, size_t start
 double Program::_ApplyAsFunctionArgument(double arg, const string& line, size_t& start, size_t& len)
 {
    double result = arg; // default: no function
-   if(!::isalpha(line[start-1])) // not a character - not a function!
+   if(start == 0 || !::isalpha(line[start-1])) // not a character - not a function!
       return arg;
 
    size_t pos = start; // new start position
@@ -605,7 +605,7 @@ double Program::_ReadParameter(const string& line, size_t pos, size_t& len)
    // unwind references
    for(;nref > 0; --nref){
       size_t idx = static_cast<size_t>(round(value));
-      if(idx > TOTAL_PARAMETERS)
+      if(idx == 0 || idx > TOTAL_PARAMETERS)
          throw ErrorMsg(this, "Parameter #%d does not exist", idx);
       value = (idx <= TOTAL_LOCAL_PARAMETERS)? _local_params[idx-1]: _params[idx-1];
    }
@@ -645,7 +645,7 @@ void Program::_AssignParameter(const string& line, size_t pos, size_t& len)
    size_t idx;
    for(;nref > 0; --nref){
       idx = static_cast<size_t>(round(index));
-      if(idx > TOTAL_PARAMETERS)
+      if(idx == 0 || idx > TOTAL_PARAMETERS)
          throw ErrorMsg(this, "Parameter #%d does not exist", idx);
       index = (idx <= TOTAL_LOCAL_PARAMETERS)? _local_params[idx-1]: _params[idx-1];
    }

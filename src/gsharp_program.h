@@ -78,7 +78,7 @@ public:
    const static size_t INTERNAL_PARAMETERS_START = TOTAL_CNC_PARAMETERS; // above the valid range of CNC parameters
    const static size_t MAX_STACK_LEVELS = 1000; // TODO: define real & safe stack depth
    const static size_t RETURN_VALUE_PARAMETER = 5000; // if any sub returns value, it is stored here
-   const static size_t TOLERANCE_EQUAL = 0.0001; // defined in LinuxCNC for comparison of doubles
+   const double TOLERANCE_EQUAL = 0.0001; // defined in LinuxCNC for comparison of doubles
    const static bool USE_BLOCK_DELETE = false; // disabled by default
    const static bool USE_PRETTY_FORMAT = true; // enabled: add spaces between g-words
    const static bool CONVERT_TO_UPPER = true; // enabled: all output characters are in upper case

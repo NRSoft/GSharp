@@ -245,7 +245,7 @@ bool Program::Step(string& line, ExtraInfo& extra)
             continue;
          }
          else if(_current_line == _percent_stop){
-            _current_line = _code.size(); // finished: move to the last line
+            _current_line = static_cast<LineNumber>(_code.size()); // finished: move to the last line
             continue;
          }
          else if(!_percent_active){
@@ -341,7 +341,7 @@ bool Program::Step(string& line, ExtraInfo& extra)
                double argument = arguments[0]; //stod(line);
 
                if(cmd == "repeat")
-                  block.run_times = argument;
+                  block.run_times = static_cast<int>(argument);
                else if(cmd == "while"){
                   if(argument == 0.0)
                      next_line = block.end_line; // finished with the loop
@@ -378,7 +378,7 @@ bool Program::Step(string& line, ExtraInfo& extra)
          _ResolveParameters(line, 3);
 
          if(line.substr(0, 2) == "m2" || line.substr(0, 3) == "m30")
-            _current_line = _code.size(); // make it the last line
+            _current_line = static_cast<LineNumber>(_code.size()); // make it the last line
 
          _FormatPretty(line);
          if(!line.empty() || extra.FirstNonEmpty())
