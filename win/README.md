@@ -1,5 +1,5 @@
 # GSharp for Windows
-Visual Studio project files for building G# macro-programming library
+Visual Studio project files for building G# macro-programming library <br/>
 GUI application to convert G# code into plain G-code using the library
 
 Version 1.0
@@ -13,6 +13,8 @@ The source files in this directory are for building the library and GUI applicat
 The library and the application project files were created using the free community edition of [Visual Studio 2015 Express](https://www.visualstudio.com/en-us/products/visual-studio-express-vs.aspx)
 
 To build both the library and the application open "GSharp.sln" solution file in Visual Studio and build under the desired configuration (Win32 or x64).
+
+The generated executables are under "Release\_Win32" or "Release\_x64" directories.
 
 License
 -------
