@@ -41,45 +41,49 @@ of the job by control software.
 
 Requirements
 ------------
-Current version provides Makefile and [Code::Blocks](http://www.codeblocks.org/) project files
-to generate the library from the source code.
-It requires C++11 compatible compiler (e.g. [G++](https://gcc.gnu.org/) v4.8 or higher).
+Current version uses CMake v3.1+ to build the library, generate the usage example and run the unit tests.
+The repository also contains [Code::Blocks](http://www.codeblocks.org/) project files.
+To build the library you will need a C++11 compatible compiler (e.g. [G++](https://gcc.gnu.org/) v4.8 or higher).
 There are no external dependencies if the goal is to produce the release version of the library.
 
-To compile the library using G++ run:
+To compile the library using CMake navigate to the top directory and run:
 
-    make release
+    cmake .
+    make
 
-The generated library will be located under the 'lib' directory.
-
-Unit tests are also provided, but they require [googletest](https://github.com/google/googletest)
-as the testing platform.
-For linking consistency the source code of googletest v1.7 is also provided.
-Run `make` command from the 'external/gtest' directory to generate the platform libraries.
-Alternatively use corresponding Code::Blocks project file, select target "All" and recompile.
-
-To generate the test binary, switch to the top directory and run:
-
-    make test
-
-The generated test executable will be located in the top directory.
-
-The library has been tested on Linux machines only.
-Please let us know if there are any issues compiling and running it on other OS platforms.
+The generated library will be located under the 'lib' sub-directory. The header files are under the 'include' sub-directory.
 
 Usage
 -----
 The top directory contains the 'example.cpp' file, which demonstrates how to use the library.
 It opens a G# program from a file, interpretes it line-by-line and stores the output
 (plain G-code lines) into another file. As such it can be used as a stand-alone converter.
+The `make` command will generate 'gs2g' binary from the 'example.cpp', which can be executed in command line as following:
 
-To compile the example using G++ run:
+    ./gs2g <input_file> <output_file>
 
-    g++ example.cpp -Iinclude -Llib -lgsharp -og#2g -Wall -std=c++11
+Test
+----
+Unit tests are also provided, they use [googletest](https://github.com/google/googletest)
+as the testing platform. For linking consistency the source code of googletest v1.7 is also provided.
+Running the `make` command will automatically generate required gtest libraries.
+Alternatively you can use corresponding Code::Blocks project file in 'external/gtest' directory to build the libraries 
+(select target "All" and recompile).
 
-It will generate 'g#2g' binary, which can be executed as following:
+To run unit tests:
 
-    g#2g <input_file> <output_file>
+    make test
+
+Alternatively you can run them directly as gtest bianry:
+
+    ./gsharp_test
+
+The library has been tested on Linux and Windows machines only.
+Please let us know if there are any issues compiling and running it on other OS platforms.
+
+Windows
+-------
+Follow the instruction in the win/README.md to build the library and GSharp converter in Windows environment.
 
 License
 -------

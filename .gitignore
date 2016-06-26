@@ -24,7 +24,7 @@
 # Executables
 *.out
 *.app
-g#2g
+gs2g
 gsharp_test
 
 # Temporary files
@@ -40,6 +40,13 @@ gsharp_test
 **/bin/
 **/lib/
 **/obj/
+
+# CMake temporary files
+*.cmake
+CMakeCache.txt
+**/CMakeFiles
+**/Testing
+Makefile
 
 # Visual Studio cache/options directory
 .vs/
