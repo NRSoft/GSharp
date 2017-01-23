@@ -119,6 +119,7 @@ void Program::Load(const string& code)
    string line;
    stringstream ss(code);
    for(; getline(ss, line); ++_current_line){
+       _last_used_line = _current_line;
       _code.push_back(line);
 
       // prepare the string for processing
