@@ -153,7 +153,7 @@ void Program::Load(const string& code)
          if(cmd != "call"){ // 'call' can appear anywhere, don't process it yet
             if(_blocks.count(o_num) == 0){
                // then create the new code block
-               CodeBlock block{CodeBlock::UNDEF, _current_line, vector<LineNumber>()};
+               CodeBlock block{CodeBlock::UNDEF, _current_line, vector<LineNumber>(), 0, 0};
                if(cmd == "sub")
                   block.type = CodeBlock::SUB;
                else if(cmd == "if")
